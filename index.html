@@ -136,11 +136,15 @@
           var height_object = $('#wrap').height();
           var height_footer = height_screen - height_object;
           var height_margin = height_footer / 2;
-          console.log( "" );
-          console.log( "window             : "+ height_screen );
-          console.log( "#wrap              : "+ height_object );
-          console.log( "window - #wrap     : "+ height_footer );
-          console.log( "window - #wrap / 2 : "+ height_margin );
+
+          /*
+            console.log( "" );
+            console.log( "window             : "+ height_screen );
+            console.log( "#wrap              : "+ height_object );
+            console.log( "window - #wrap     : "+ height_footer );
+            console.log( "window - #wrap / 2 : "+ height_margin );
+          */
+
           $('#wrap').css({
             'margin-top'      : height_margin,
           });
@@ -149,6 +153,9 @@
           });
 
           $('.grecaptcha-badge').css('opacity', '0.2')
+
+          if ( timer['minute'] == 59 && timer['second'] >=57 ) {
+          }
 
         } else {
           $('#wrap').append('<div />');
