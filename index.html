@@ -5,6 +5,7 @@
   <title>Labs Menu</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script type="text/javascript" src="./lib/jQuery_library.js"></script>
+  <link rel="stylesheet" href="./lib/font.css">
   <link rel="manifest" href="./lib/manifest.php">
   <script type="text/javascript">
     <!-- service workerの登録関係 -->
@@ -108,24 +109,49 @@
     $(window).on('load', function(){
       layout_dark();
 
+
       setInterval(function(){
         $('#wrap').remove();
         $('body').append('<div />');
         $('body>div:last-child').attr('id', 'wrap');
-        $('#wrap').css({
-          'user-select'     : 'none',
-          'height'          : $(window).height(),
-          'font-size'       : '60pt',
-        });
 
-        var timer = getTimer();
-        $('#wrap').append('<div />');
-        $('#wrap>div:last-child').attr('id', 'timer_date');
-        $('#timer_date').text(timer['month'] + '/' + timer['date'] + '(' + timer['day'] + ')');
+        if(typeof window.orientation === 'undefined' || window.orientation == 90 || window.orientation == -90){
+          $('#wrap').append('<div />');
+          $('#wrap>div:last-child').attr('id', 'timer_date');
 
-        $('#wrap').append('<div />');
-        $('#wrap>div:last-child').attr('id', 'timer_time');
-        $('#timer_time').text(timer['timestr']);
+          $('#wrap').append('<div />');
+          $('#wrap>div:last-child').attr('id', 'timer_time');
+
+          var timer = getTimer();
+          $('#timer_date').text(timer['month'] + '/' + timer['date'] + '(' + timer['day'] + ')');
+          $('#timer_time').text(timer['timestr']);
+
+          $('#wrap').css({
+            'user-select'     : 'none',
+            'height'          : 'auto',
+            'margin-top'      : 0,
+            'font-size'       : '60pt',
+          });
+
+          /*
+          alert( $(window).height() ); //青
+          alert( $('#wrap').height() ); //緑
+          alert( $(window).height() - $('#wrap').height() ); //橙
+          alert( ( $(window).height() - $('#wrap').height() ) / 2 ); //橙2
+          */
+
+          $('.grecaptcha-badge').css('opacity', '0.2')
+          /*
+
+          */
+
+        } else {
+          $('#wrap').append('<div />');
+          $('#wrap>div:last-child').attr('id', 'warnalert');
+          $('#warnalert').text('横向きにしてください');
+
+        }
+
 
       }, 500);
     });
