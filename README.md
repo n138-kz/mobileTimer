@@ -19,8 +19,8 @@
  
  
 # Use the Library
-- [jQuery v3.4.1](https://jquery.com/)
+- [jQuery v3.4.1](https://jquery.com/) -> [jQuery_library.js](/lib/jQuery_library.js)
   
 # Using the resources
-- [はれのそら明朝](https://fontopo.com/?p=377)
+- [はれのそら明朝](https://fontopo.com/?p=377) -> [font.css](/lib/font.css) -> [Harenosora.otf](/lib/Harenosora.otf)
   
