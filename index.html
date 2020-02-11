@@ -91,7 +91,7 @@
         layout_dark();
       }
       else{
-        layout_dark();
+        location.reload();
       }
     }
   </script>
@@ -109,13 +109,12 @@
     $(window).on('load', function(){
       layout_dark();
 
-
       setInterval(function(){
         $('#wrap').remove();
         $('body').append('<div />');
         $('body>div:last-child').attr('id', 'wrap');
 
-        if(typeof window.orientation === 'undefined' || window.orientation == 90 || window.orientation == -90){
+        if(( 400 <= $(window).width() ) || window.orientation == 90 || window.orientation == -90){
           $('#wrap').append('<div />');
           $('#wrap>div:last-child').attr('id', 'timer_date');
 
@@ -128,22 +127,28 @@
 
           $('#wrap').css({
             'user-select'     : 'none',
-            'height'          : 'auto',
-            'margin-top'      : 0,
             'font-size'       : '60pt',
+            'margin'          : 0,
+            'padding'         : 0,
           });
 
-          /*
-          alert( $(window).height() ); //青
-          alert( $('#wrap').height() ); //緑
-          alert( $(window).height() - $('#wrap').height() ); //橙
-          alert( ( $(window).height() - $('#wrap').height() ) / 2 ); //橙2
-          */
+          var height_screen = $(window).height();
+          var height_object = $('#wrap').height();
+          var height_footer = height_screen - height_object;
+          var height_margin = height_footer / 2;
+          console.log( "" );
+          console.log( "window             : "+ height_screen );
+          console.log( "#wrap              : "+ height_object );
+          console.log( "window - #wrap     : "+ height_footer );
+          console.log( "window - #wrap / 2 : "+ height_margin );
+          $('#wrap').css({
+            'margin-top'      : height_margin,
+          });
+          $('body').css({
+            'height'  : height_screen - height_margin,
+          });
 
           $('.grecaptcha-badge').css('opacity', '0.2')
-          /*
-
-          */
 
         } else {
           $('#wrap').append('<div />');
@@ -151,7 +156,6 @@
           $('#warnalert').text('横向きにしてください');
 
         }
-
 
       }, 500);
     });
