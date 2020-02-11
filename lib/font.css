@@ -3,6 +3,10 @@
   font-family: "あんずもじ";
   src: url("APJapanesefont.ttf") format("truetype")
 }
+@font-face {
+  font-family: "はれのそら明朝";
+  src: url("Harenosora.otf") format("opentype");
+}
 *{
-  font-family: "あんずもじ";
+  font-family: "はれのそら明朝";
 }
