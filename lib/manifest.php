@@ -15,19 +15,24 @@
     "start_url"        => '/'.$dir[count($dir)-3].'/'.'?src=apps',
     "icons"            => [
       [
+        'type'  => 'image/png',
         'src'   => 'icon064.png',
         'sizes' => '64x64',
-        'type'  => 'image/png',
       ],
       [
-        'src'   => 'icon128.png',
+        'type'  => 'image/png',
         'sizes' => '128x128',
-        'type'  => 'image/png',
+        'src'   => 'icon128.png',
       ],
       [
-        'src'   => 'icon256.png',
-        'sizes' => '256x256',
         'type'  => 'image/png',
+        'sizes' => '192x192',
+        'src'   => 'icon192.png',
+      ],
+      [
+        'type'  => 'image/png',
+        'sizes' => '256x256',
+        'src'   => 'icon256.png',
       ],
     ]
   ];
