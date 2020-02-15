@@ -171,20 +171,6 @@
             'height'  : height_screen - height_margin,
           });
 
-          $('#wrap').append('<audio />');
-          $('#wrap>audio:last-child').attr('id', 'countdownAlarm');
-          $('#countdownAlarm').html('Your browser does not support the <code>audio</code> element.');
-          $('#countdownAlarm').attr({
-            'src': './lib/sound_various_mp3_clock.mp3',
-          });
-          if ( timer['second'] >=57 ) {
-          //if ( timer['minute'] == 59 && timer['second'] >=57 ) {
-            $('#countdownAlarm').attr({
-              'autoplay': 'autoplay',
-            });
-
-          }
-
         } else {
           $('.grecaptcha-badge').css('opacity', '1')
 
