@@ -103,6 +103,23 @@
       $(document).click(function(){ $(window).click(); });
       $('body').click(function(){ $(window).click(); });
       $('#wrap').click(function(){ $(window).click(); });
+      $('#timer_date').click(function(){
+        
+      });
+      $('#timer_time').click(function(){ $('#timer_date').click(); });
+    });
+  </script>
+  <script type="text/javascript">
+    $(function(){
+      $('.grecaptcha-badge').focusout(function(){
+        $('.grecaptcha-badge').css('opacity', 0.05);
+      });
+      $('.grecaptcha-badge').focus(function(){
+        $('.grecaptcha-badge').css('opacity', 1);
+      });
+      $('.grecaptcha-badge').click(function(){
+        $('.grecaptcha-badge').focus();
+      });
     });
   </script>
   <script type="text/javascript">
