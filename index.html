@@ -115,7 +115,7 @@
         $('.grecaptcha-badge').css('opacity', 0.05);
       });
       $('.grecaptcha-badge').focus(function(){
-        $('.grecaptcha-badge').css('opacity', 1);
+        $('.grecaptcha-badge').css('opacity', 0.25);
       });
       $('.grecaptcha-badge').click(function(){
         $('.grecaptcha-badge').focus();
@@ -131,7 +131,6 @@
         $('body').append('<div />');
         $('body>div:last-child').attr('id', 'wrap');
 
-        if(( 400 <= $(window).width() ) || window.orientation == 90 || window.orientation == -90){
           $('.grecaptcha-badge').css('opacity', '0.05')
 
           $('#wrap').append('<div />');
@@ -170,15 +169,6 @@
           $('body').css({
             'height'  : height_screen - height_margin,
           });
-
-        } else {
-          $('.grecaptcha-badge').css('opacity', '1')
-
-          $('#wrap').append('<div />');
-          $('#wrap>div:last-child').attr('id', 'warnalert');
-          $('#warnalert').text('横向きにしてください');
-
-        }
 
       }, 500);
     });
