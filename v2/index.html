@@ -38,16 +38,16 @@
       background-color: black;
       color: white;
     }
-    div#wrap{
+    #wrap{
       font-size: 50pt;
-      margin: 0 auto;
-      padding: 0;
       user-select: none;
     }
-    div#wrap_inner{
-			top: 50%;
-			left: 50%;
-			transform: translate(50%, 50%);
+    #wrap_inner{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
     }
   </style>
   <script type="text/javascript">
@@ -58,13 +58,13 @@
         $('body>div:last-child').attr('id', 'wrap');
 
           $('#wrap').append('<div />');
-          $('#wrap>div:last-child').attr('id', 'wrap_innner');
+          $('#wrap>div:last-child').attr('id', 'wrap_inner');
 
-          $('#wrap_innner').append('<div />');
-          $('#wrap_innner>div:last-child').attr('id', 'timer_date');
+          $('#wrap_inner').append('<div />');
+          $('#wrap_inner>div:last-child').attr('id', 'timer_date');
 
-          $('#wrap_innner').append('<div />');
-          $('#wrap_innner>div:last-child').attr('id', 'timer_time');
+          $('#wrap_inner').append('<div />');
+          $('#wrap_inner>div:last-child').attr('id', 'timer_time');
 
           let timer  = new Date();
           let timers = {};
