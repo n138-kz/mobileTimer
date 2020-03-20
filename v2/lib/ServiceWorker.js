@@ -1,6 +1,6 @@
 // キャッシュファイルの指定
 var CACHE_NAME = 'ServiceWorker';
-var urlsToCache = [ '/' ];
+var urlsToCache = [ '/mobileTimer/v2/' ];
 
 // インストール処理
 self.addEventListener('install', function(event) {
