@@ -74,7 +74,7 @@
               timers.hour        = ( '000' + ( timer.getHours()     ) ).slice(-2);
               timers.minute      = ( '000' + ( timer.getMinutes()   ) ).slice(-2);
               timers.second      = ( '000' + ( timer.getSeconds()   ) ).slice(-2);
-              timers.day         = ['日', '月', '火', '水', '木', '金', '土'][timer.getDay()];
+              timers.day         = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][timer.getDay()];
 
           $('#timer_date').text(timers.month + '/' + timers.date + '(' + timers.day + ')');
           $('#timer_time').text(timers.hour + ':' + timers.minute + ':' + timers.second);
