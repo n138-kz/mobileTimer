@@ -1,0 +1,32 @@
+{
+    "name": "Mobile Timer",
+    "short_name": "Mobile Timer",
+    "description": "Mobile Timer",
+    "display": "standalone",
+    "background_color": "#000",
+    "theme_color": "#000",
+    "orientation": "landscape",
+    "start_url": "/mobileTimer/v2/?src=apps",
+    "icons": [
+        {
+            "type": "image/png",
+            "src": "icon064.png",
+            "sizes": "64x64"
+        },
+        {
+            "type": "image/png",
+            "sizes": "128x128",
+            "src": "icon128.png"
+        },
+        {
+            "type": "image/png",
+            "sizes": "192x192",
+            "src": "icon192.png"
+        },
+        {
+            "type": "image/png",
+            "sizes": "256x256",
+            "src": "icon256.png"
+        }
+    ]
+}
