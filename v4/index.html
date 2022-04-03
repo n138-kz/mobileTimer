@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LfCHdcUAAAAAOwkHsW_7W7MfoOrvoIw9CXdLRBA"></script>
+    <script type="text/javascript">
+      grecaptcha.ready(function() { grecaptcha.execute('6LfCHdcUAAAAAOwkHsW_7W7MfoOrvoIw9CXdLRBA', {action: 'homepage'}); });
+    </script>
+    <style media="screen">
+      .grecaptcha-badge{
+        opacity: 0;
+      }
+    </style>
+    <style media="screen">
+      body
+      {
+        margin: 0;
+      }
+      div#wrap0
+      {
+        user-select: none;
+        text-align: center;
+      }
+      img#menu0
+      {
+        width: 32px;
+        cursor: pointer;
+        right: 0;
+        margin: 5px;
+        position: absolute;
+        display: flex;
+      }
+    </style>
+    <style type="text/css">
+       /* === ボタンを表示するエリア ============================== */
+      .switchArea {
+        line-height    : 60px;                /* 1行の高さ          */
+        letter-spacing : 0;                   /* 文字間             */
+        text-align     : center;              /* 文字位置は中央     */
+        font-size      : 27px;                /* 文字サイズ         */
+
+        position       : relative;            /* 親要素が基点       */
+        margin         : auto;                /* 中央寄せ           */
+        width          : 150px;               /* ボタンの横幅       */
+        background     : #fff;                /* デフォルト背景色   */
+      }
+
+       /* === チェックボックス ==================================== */
+      .switchArea input[type="checkbox"] {
+        display        : none;            /* チェックボックス非表示 */
+      }
+
+       /* === チェックボックスのラベル（標準） ==================== */
+      .switchArea label {
+        display        : block;               /* ボックス要素に変更 */
+        box-sizing     : border-box;          /* 枠線を含んだサイズ */
+        height         : 60px;                /* ボタンの高さ       */
+        border         : 2px solid #696969;   /* 未選択タブのの枠線 */
+        border-radius  : 30px;                /* 角丸               */
+      }
+
+       /* === チェックボックスのラベル（ONのとき） ================ */
+      .switchArea input[type="checkbox"]:checked +label {
+        border-color   : #008000;             /* 選択タブの枠線     */
+      }
+
+       /* === 表示する文字（標準） ================================ */
+      .switchArea label span:after{
+        content        : "OFF";               /* 表示する文字       */
+        padding        : 0 0 0 36px;          /* 表示する位置       */
+        color          : #696969;             /* 文字色             */
+      }
+
+       /* === 表示する文字（ONのとき） ============================ */
+      .switchArea  input[type="checkbox"]:checked + label span:after{
+        content        : "ON";                /* 表示する文字       */
+        padding        : 0 36px 0 0;          /* 表示する位置       */
+        color          : #008000;             /* 文字色             */
+      }
+
+       /* === 丸部分のSTYLE（標準） =============================== */
+      .switchArea #swImg1 {
+        position       : absolute;            /* 親要素からの相対位置*/
+        width          : 52px;                /* 丸の横幅           */
+        height         : 52px;                /* 丸の高さ           */
+        background     : #696969;             /* カーソルタブの背景 */
+        top            : 4px;                 /* 親要素からの位置   */
+        left           : 4px;                 /* 親要素からの位置   */
+        border-radius  : 26px;                /* 角丸               */
+        transition     : .2s;                 /* 滑らか変化         */
+      }
+
+       /* === 丸部分のSTYLE（ONのとき） =========================== */
+      .switchArea input[type="checkbox"]:checked ~ #swImg1 {
+        transform      : translateX(90px);    /* 丸も右へ移動       */
+        background     : #008000;             /* カーソルタブの背景 */
+      }
+
+      /* === 丸部分のSTYLE（標準） =============================== */
+     .switchArea #swImg2 {
+       position       : absolute;            /* 親要素からの相対位置*/
+       width          : 52px;                /* 丸の横幅           */
+       height         : 52px;                /* 丸の高さ           */
+       background     : #696969;             /* カーソルタブの背景 */
+       top            : 4px;                 /* 親要素からの位置   */
+       left           : 4px;                 /* 親要素からの位置   */
+       border-radius  : 26px;                /* 角丸               */
+       transition     : .2s;                 /* 滑らか変化         */
+     }
+
+      /* === 丸部分のSTYLE（ONのとき） =========================== */
+     .switchArea input[type="checkbox"]:checked ~ #swImg2 {
+       transform      : translateX(90px);    /* 丸も右へ移動       */
+       background     : #008000;             /* カーソルタブの背景 */
+     }
+
+      /* === 丸部分のSTYLE（標準） =============================== */
+     .switchArea #swImg3 {
+       position       : absolute;            /* 親要素からの相対位置*/
+       width          : 52px;                /* 丸の横幅           */
+       height         : 52px;                /* 丸の高さ           */
+       background     : #696969;             /* カーソルタブの背景 */
+       top            : 4px;                 /* 親要素からの位置   */
+       left           : 4px;                 /* 親要素からの位置   */
+       border-radius  : 26px;                /* 角丸               */
+       transition     : .2s;                 /* 滑らか変化         */
+     }
+
+      /* === 丸部分のSTYLE（ONのとき） =========================== */
+     .switchArea input[type="checkbox"]:checked ~ #swImg3 {
+       transform      : translateX(90px);    /* 丸も右へ移動       */
+       background     : #008000;             /* カーソルタブの背景 */
+     }
+
+    </style>
+    <script type="text/javascript">
+      function sleep(time){
+        /*
+        * time: milli second
+        * time: type=integer
+        */
+        var startMsec = new Date();
+        while ((new Date() - startMsec) < time);
+        return;
+      };
+    </script>
+    <script type="text/javascript">
+      function newDate() {
+        let now = new Date();
+        let now_printf = {
+          Y:""+now.getFullYear(),
+          m:("00"+(now.getMonth()+1)).substr(-2),
+          d:("00"+(now.getDate())).substr(-2),
+          H:("00"+(now.getHours())).substr(-2),
+          i:("00"+(now.getMinutes())).substr(-2),
+          s:("00"+(now.getSeconds())).substr(-2),
+        }
+
+        let now_printf_textLine = '';
+        now_printf_textLine += now_printf.Y;
+        now_printf_textLine += '/';
+        now_printf_textLine += now_printf.m;
+        now_printf_textLine += '/';
+        now_printf_textLine += now_printf.d;
+        now_printf_textLine += '\n';
+        now_printf_textLine += now_printf.H;
+        now_printf_textLine += ':';
+        now_printf_textLine += now_printf.i;
+        now_printf_textLine += ':';
+        now_printf_textLine += now_printf.s;
+        console.log(now_printf_textLine);
+
+        buildBody(now_printf_textLine);
+      }
+    </script>
+    <script type="text/javascript">
+      function buildBody(text) {
+        $('div#wrap0').html(text.replace(/\n/g,'#'));
+      }
+    </script>
+    <script type="text/javascript">
+      //setTimeout('newDate()',1000);
+      setInterval('newDate()',1000);
+    </script>
+    <title>Mobile Timer</title>
+  </head>
+  <body>
+    <img id="menu0" src="menu.png" />
+    <div id="wrap0"></div>
+    <div id="wrap1">
+      <table>
+        <tr>
+          <th colspan="2">Sound</th>
+        </tr>
+        <tr>
+          <th>Sound</th>
+          <td>
+            <div class="switchArea">
+              <input type="checkbox" id="switch1">
+              <label for="switch1"><span></span></label>
+              <div id="swImg1"></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>1hrs毎<br />時報</th>
+          <td>
+            <div class="switchArea">
+              <input type="checkbox" id="switch2">
+              <label for="switch2"><span></span></label>
+              <div id="swImg2"></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>3sec前<br />カウントダウン</th>
+          <td>
+            <div class="switchArea">
+              <input type="checkbox" id="switch3">
+              <label for="switch3"><span></span></label>
+              <div id="swImg3"></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
