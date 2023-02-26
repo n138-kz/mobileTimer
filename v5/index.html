@@ -155,13 +155,17 @@
             }
 
             elm_date = document.createElement('div');
+            elm_date.id = 'timer_date';
             elm_date.innerText = timer[2].textformat.date[0];
             elm_time = document.createElement('div');
+            elm_time.id = 'timer_time';
             elm_time.innerText = timer[2].textformat.time[0];
+            elm_block = document.createElement('div');
+            elm_block.appendChild(elm_date);
+            elm_block.appendChild(elm_time);
 
             document.querySelector('body').innerHTML = '';
-            document.querySelector('body').appendChild(elm_date);
-            document.querySelector('body').appendChild(elm_time);
+            document.querySelector('body').appendChild(elm_block);
         }, 15);
     </script>
 </head>
