@@ -20,22 +20,22 @@ function readAloud(text) {
     uttr.removeEventListener('boundary', () => {});
     uttr.removeEventListener('error',    () => {});
     uttr.addEventListener('start', (event) => {
-      console.debug(event);
+      console.log(event.type,event);
     });
     uttr.addEventListener('pause', (event) => {
-      console.debug(event);
+      console.log(event.type,event);
     });
     uttr.addEventListener('resume', (event) => {
-      console.debug(event);
+      console.log(event.type,event);
     });
     uttr.addEventListener('end', (event) => {
-      console.debug(event);
+      console.log(event.type,event);
     });
     uttr.addEventListener('mark', (event) => {
-      console.debug(event);
+      console.log(event.type,event);
     });
     uttr.addEventListener('boundary', (event) => {
-      console.debug(event);
+      console.debug(event.type,event);
     });
     uttr.addEventListener('error', (event) => {
       console.error(event);
