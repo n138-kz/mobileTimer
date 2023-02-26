@@ -39,6 +39,7 @@ function readAloud(text) {
     });
     uttr.addEventListener('error', (event) => {
       console.error(event);
+      console.trace(event);
     });
 
     // テキストを設定 (必須)
