@@ -135,7 +135,17 @@
                 } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) >= 7) {
                     /* :07-09秒 */
                     console.debug(timer[2].textformat.time[0],':07-09');
-                    audio(0);
+
+                    console.debug(parseInt(timer[2].second),typeof parseInt(timer[2].second),typeof 0,parseInt(timer[2].minute)==29);
+                    console.debug(parseInt(timer[2].second),typeof parseInt(timer[2].second),typeof 0,parseInt(timer[2].minute)==59);
+                    if (false) {                        
+                    } else if (parseInt(timer[2].minute)==29) {
+                        /* :29:07-09秒 */
+                        audio(0);
+                    } else if (parseInt(timer[2].minute)==59) {
+                        /* :59:07-09秒 */
+                        audio(0);
+                    }
                 }
                 console.debug(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1));
             }
