@@ -118,7 +118,7 @@
                 console.debug(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1));
                 if(false) {
                 } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) == 0) {
-                    /* :00秒 */
+                    /* :00秒,10秒,20秒,30秒,40秒,50秒, */
                     console.debug(timer[2].textformat.time[0],':00');
                     audio(12*2);
 
@@ -126,6 +126,7 @@
                     console.debug(parseInt(timer[2].second),typeof parseInt(timer[2].second),typeof 0,parseInt(timer[2].second)==0);
                     readAloud_text = timer[2].textformat.time[0];
                     if(parseInt(timer[2].second)==0){
+                       /* :00秒 */
                         readAloud_text += 'ちょうど';
                     }
                     readAloud_play( readAloud_text );
