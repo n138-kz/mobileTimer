@@ -169,12 +169,12 @@
             elm_block.appendChild(elm_date);
             elm_block.appendChild(elm_time);
 
-            document.querySelector('body').innerHTML = '';
-            document.querySelector('body').appendChild(elm_block);
+            document.querySelector('#timer_module').innerHTML = '';
+            document.querySelector('#timer_module').appendChild(elm_block);
         }, 10);
     </script>
 </head>
 <body>
-
+    <div id="timer_module"></div>
 </body>
 </html>
