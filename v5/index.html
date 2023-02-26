@@ -145,6 +145,8 @@
                     } else if (parseInt(timer[2].minute)==59) {
                         /* :59:07-09秒 */
                         audio(0);
+                    } else {
+                        audio(24);
                     }
                 }
                 console.debug(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1));
