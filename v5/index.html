@@ -124,10 +124,11 @@
 
                     console.log(timer[2].textformat.time[0]);
                     console.debug(parseInt(timer[2].second),typeof parseInt(timer[2].second),typeof 0,parseInt(timer[2].second)==0);
+                    readAloud_text = timer[2].textformat.time[0]
                     if(parseInt(timer[2].second)==0){
-                        timer[2].textformat.time[0] += 'ちょうど';
+                        readAloud_text += 'ちょうど';
                     }
-                    readAloud_play( timer[2].textformat.time[0] );
+                    readAloud_play( readAloud_text );
                 } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) < 7) {
                     /* :01-06秒 */
                     console.debug(timer[2].textformat.time[0],':01-06');
