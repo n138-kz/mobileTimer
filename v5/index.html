@@ -119,6 +119,11 @@
                 if(false) {
                 } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) == 0) {
                     /* :00秒,10秒,20秒,30秒,40秒,50秒, */
+                    /*
+                    * Well-known-issue
+                    * - [v5 *:*:10 の時SpeechSynthesisが強制終了する #6](https://github.com/n138-kz/mobileTimer/issues/6)
+                    * 
+                    */
                     console.debug(timer[2].textformat.time[0],':00');
                     audio(12);
 
