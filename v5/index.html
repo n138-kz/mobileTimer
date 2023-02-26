@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Timer v5</title>
+    <link rel="manifest" href="./lib/manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            localStorage.setItem( (btoa(location.href)).slice(0, 16) + '.ServiceWorker', JSON.stringify({token: ''}) );
+            navigator.serviceWorker.register('ServiceWorker.js').then(function(registration) {
+               localStorage.setItem( (btoa(location.href)).slice(0, 16) + '.ServiceWorker', JSON.stringify({token: registration.scope}) );
+            });
+        } else {
+            if (location.protocol != 'https:') {
+            console.error('ServiceWorker registration failed. not supported expect https.');
+            } else {
+                console.error('ServiceWorker registration failed. not supported this browser.');
+            }
+        }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfCHdcUAAAAAOwkHsW_7W7MfoOrvoIw9CXdLRBA"></script>
+    <script>
+        grecaptcha.ready(function() {
+            localStorage.setItem( (btoa(location.href)).slice(0, 16) + 'reCAPTCHA', JSON.stringify({token: ''}) );
+            grecaptcha.execute('6LfCHdcUAAAAAOwkHsW_7W7MfoOrvoIw9CXdLRBA', {action: 'homepage'}).then(function(token) {
+                localStorage.setItem( (btoa(location.href)).slice(0, 16) + 'reCAPTCHA', JSON.stringify({token: token}) );
+            });
+        });
+    </script>
+    <style media="screen">
+        .grecaptcha-badge{ opacity: 0; }
+    </style>
+    <style media="screen">
+        body{
+        background-color: black;
+        color: white;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', function(){
+            console.log('contextmenu');
+            window.open('preference.html', (btoa(location.href)).slice(0, 16), 'width=200px;height=200px;');
+            return false;
+        });
+    </script>
+    <script>
+        function getTimer(){
+            let timer           = [];
+            timer[0]            = new Date();
+            timer[1]            = timer[0].getTime()/1000;
+            timer[2]            = {};
+            timer[2].year       = ( '0000' + ( timer[0].getFullYear()  ) ).slice(-4);
+            timer[2].month      = ( '0000' + ( timer[0].getMonth() + 1 ) ).slice(-2);
+            timer[2].date       = ( '0000' + ( timer[0].getDate()      ) ).slice(-2);
+            timer[2].hour       = ( '0000' + ( timer[0].getHours()     ) ).slice(-2);
+            timer[2].minute     = ( '0000' + ( timer[0].getMinutes()   ) ).slice(-2);
+            timer[2].second     = ( '0000' + ( timer[0].getSeconds()   ) ).slice(-2);
+            timer[2].day        = {};
+            timer[2].day.enus   = {};
+            timer[2].day.enus[0]= ['Sunday', 'Monday', 'Tueday', 'Wedday', 'Thuday', 'Friday', 'Satday'][timer[0].getDay()];
+            timer[2].day.enus[1]= timer[2].day.enus[0].substring(0,3);
+            timer[2].day.jajp   = {};
+            timer[2].day.jajp[0]= ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'][timer[0].getDay()];
+            timer[2].day.jajp[1]= timer[2].day.jajp[0].substring(0,1);
+            timer[2].textformat = {};
+            timer[2].textformat.date = [
+                timer[2].year + '/' + timer[2].month + '/' + timer[2].date,
+                timer[2].year + '/' + timer[2].month + '/' + timer[2].date + '(' + timer[2].day.enus[1] + ')',
+            ];
+            timer[2].textformat.time = [
+                timer[2].hour + ':' + timer[2].minute + ':' + timer[2].second,
+            ];
+            return timer;
+        }
+        function audio(frequencyAppend=0){
+            /* https://www.cyokodog.net/blog/web-audio-api-music/ */
+            window.AudioContext = window.AudioContext||window.webkitAudioContext;
+            var audioContext = new AudioContext();
+
+            //音の発生源
+            var osciillatorNode = audioContext.createOscillator();
+
+            //音程を設定
+            var frequency = parseInt(440 * Math.pow(Math.pow(2,1/12), (3-12) + frequencyAppend), 10);
+            osciillatorNode.frequency.value = frequency;
+
+            //音量を少しづつ下げ音色をソフトにする
+            var gainNode = audioContext.createGain();
+
+            let play = {};
+            play.count = 0;
+            gainNode.gain.setValueAtTime(0, play.count);
+            gainNode.gain.linearRampToValueAtTime(1.0, play.count + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0.7, play.count + 0.20);
+            gainNode.gain.linearRampToValueAtTime(0.4, play.count + 0.40);
+            gainNode.gain.linearRampToValueAtTime(0.0, play.count + 0.80);
+
+            //音の出力
+            osciillatorNode.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            //音を鳴らす
+            osciillatorNode.start = osciillatorNode.start || osciillatorNode.noteOn; //互換対応
+            osciillatorNode.start();
+        }
+        setInterval(function(){
+            let timer = getTimer();
+
+            /* 秒が変わった */
+            console.debug(Math.floor(timer[1]));
+            console.debug(timer[2].textformat.time[0]);
+            if(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.timer' ) != Math.floor(timer[1])) {
+                sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.timer', JSON.stringify(Math.floor(timer[1])) );
+
+                console.debug(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1));
+                if(false) {
+                } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) == 0) {
+                    /* :00秒 */
+                    console.log(timer[2].textformat.time[0],':00');
+                    audio(12);
+                } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) < 7) {
+                    /* :01-06秒 */
+                    console.log(timer[2].textformat.time[0],':01-06');
+                    audio(24);
+                } else if(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1) >= 7) {
+                    /* :07-09秒 */
+                    console.log(timer[2].textformat.time[0],':07-09');
+                    audio(0);
+                }
+                console.debug(Math.floor(timer[1]).toString().substring(Math.floor(timer[1]).toString().length-1));
+            }
+
+            elm_date = document.createElement('div');
+            elm_date.innerText = timer[2].textformat.date[0];
+            elm_time = document.createElement('div');
+            elm_time.innerText = timer[2].textformat.time[0];
+
+            document.querySelector('body').innerHTML = '';
+            document.querySelector('body').appendChild(elm_date);
+            document.querySelector('body').appendChild(elm_time);
+        }, 15);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
