@@ -18,7 +18,7 @@
 
 ## Use the Library
 
-- [jQuery v3.4.1](https://jquery.com/) -> [jQuery_library.js](/lib/jQuery_library.js)
+- [jQuery v3.7.1 min](https://code.jquery.com/jquery-3.7.1.min.js)
   
 ## Using the resources
 
