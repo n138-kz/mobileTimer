@@ -1,4 +1,4 @@
-# mobileTimer
+# [mobileTimer](https://github.com/n138-kz/mobileTimer)
   
 [![Build status](http://img.shields.io/badge/build-passing-brightgreen.svg?style=flat)](README.md)
 [![GitHub](https://img.shields.io/github/license/lkz138/mobileTimer)](LICENSE)
